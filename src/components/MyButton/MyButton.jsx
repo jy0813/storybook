@@ -1,17 +1,24 @@
 import React from 'react';
+/*
+  * PropTypes의 경우 => 런타임 체킹을 위한 도구
+  * 예를 들어 TypeScript 의 경우 => 정적 타입 검사 도구
+ */
 import PropTypes from 'prop-types';
-import './button.css';
+import './MyButton.css';
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const MyButton = ({ primary, backgroundColor, radius, size, label, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
     <button
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
+      style={{
+        backgroundColor: backgroundColor,
+        borderRadius: radius + 'px'
+      }}
       {...props}
     >
       {label}
@@ -19,7 +26,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   );
 };
 
-Button.propTypes = {
+MyButton.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
@@ -33,18 +40,20 @@ Button.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * Button contents
+   * MyButton contents
    */
   label: PropTypes.string.isRequired,
   /**
    * Optional click handler
    */
   onClick: PropTypes.func,
+  radius:PropTypes.string
 };
 
-Button.defaultProps = {
+MyButton.defaultProps = {
   backgroundColor: null,
   primary: false,
   size: 'medium',
+  radius:null,
   onClick: undefined,
 };

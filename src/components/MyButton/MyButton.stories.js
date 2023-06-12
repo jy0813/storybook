@@ -1,9 +1,9 @@
-import { Button } from './Button';
+import { MyButton } from './MyButton.jsx';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Example/Button',
-  component: Button,
+  title: 'Wanted/MyButton',
+  component: MyButton,
   tags: ['autodocs'],
   argTypes: {
     backgroundColor: { control: 'color' },
